@@ -25,7 +25,7 @@ export const validateRoute = (handler) => {
         return;
       }
 
-      return handler(res, req, user);
+      return handler(req, res, user);
     }
 
     res.status(401);

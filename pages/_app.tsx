@@ -1,7 +1,6 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "reset-css";
 import PlayerLayout from "../components/PlayerLayout";
-import "../styles/globals.css";
 
 const theme = extendTheme({
   colors: {
