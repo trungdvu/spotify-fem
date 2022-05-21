@@ -1,5 +1,4 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import type { AppProps } from "next/app";
 import "reset-css";
 import PlayerLayout from "../components/PlayerLayout";
 import "../styles/globals.css";
@@ -31,12 +30,16 @@ const theme = extendTheme({
   },
 });
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <PlayerLayout>
+      {Component.authPage ? (
         <Component {...pageProps} />
-      </PlayerLayout>
+      ) : (
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      )}
     </ChakraProvider>
   );
 };
