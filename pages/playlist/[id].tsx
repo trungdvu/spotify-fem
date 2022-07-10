@@ -1,4 +1,5 @@
 import GradientLayout from "../../components/GradientLayout";
+import SongsTable from "../../components/SongsTable";
 import { validateToken } from "../../lib/auth";
 import prisma from "../../lib/prisma";
 
@@ -18,7 +19,7 @@ const Playlist = ({ playlist }) => {
       image={`https://picsum.photos/400?random=${playlist.id}`}
       title={playlist.name}
     >
-      {playlist.name}
+      <SongsTable songs={[]} />
     </GradientLayout>
   );
 };
