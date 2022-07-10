@@ -1,6 +1,16 @@
-import { Box, IconButton, Table, Th, Thead, Tr } from "@chakra-ui/react";
+import {
+  Box,
+  IconButton,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
+import { formatDate, formatTime } from "../lib/formatters";
 
 const SongsTable = ({ songs }) => {
   return (
@@ -26,6 +36,16 @@ const SongsTable = ({ songs }) => {
               </Th>
             </Tr>
           </Thead>
+          <Tbody>
+            {songs.map((song, i) => (
+              <Tr>
+                <Td>{i + 1}</Td>
+                <Td>{song.name}</Td>
+                <Td>{formatDate(song.createdAt)}</Td>
+                <Td>{formatTime(song.duration)}</Td>
+              </Tr>
+            ))}
+          </Tbody>
         </Table>
       </Box>
     </Box>

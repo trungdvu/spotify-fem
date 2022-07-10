@@ -19,7 +19,7 @@ const Playlist = ({ playlist }) => {
       image={`https://picsum.photos/400?random=${playlist.id}`}
       title={playlist.name}
     >
-      <SongsTable songs={[]} />
+      <SongsTable songs={playlist.songs} />
     </GradientLayout>
   );
 };
