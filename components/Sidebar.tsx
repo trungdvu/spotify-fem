@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import {
   Box,
   Divider,
@@ -7,7 +8,6 @@ import {
   ListIcon,
   ListItem,
 } from "@chakra-ui/react";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import {
   MdFavorite,
