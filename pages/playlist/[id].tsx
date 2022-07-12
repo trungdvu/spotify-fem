@@ -7,6 +7,7 @@ const getBgColor = (id) => {
   const colors = ["red", "green", "blue", "purple", "yellow", "orange"];
   return colors[id - 1] || colors[Math.floor(Math.random() * colors.length)];
 };
+
 const Playlist = ({ playlist }) => {
   const color = getBgColor(playlist.id);
 
@@ -25,11 +26,23 @@ const Playlist = ({ playlist }) => {
 };
 
 export const getServerSideProps = async ({ query, req }) => {
-  const { id } = validateToken(req.cookies.SPOTIFY_ACCESS_TOKEN) as any;
+  let user;
+
+  try {
+    user = validateToken(req.cookies.SPOTIFY_ACCESS_TOKEN);
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/signin",
+      },
+    };
+  }
+
   const [playlist] = await prisma.playlist.findMany({
     where: {
       id: +query.id,
-      userId: id,
+      userId: user.id,
     },
     include: {
       songs: {
